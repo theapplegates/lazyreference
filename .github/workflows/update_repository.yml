@@ -21,7 +21,7 @@ jobs:
         echo "Making changes to the file"
         # Add your commands here to update files
       env:
-        GITHUB_TOKEN: ${{ Ask-the-code.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 }}  # Use the secret name as you have saved in GitHub
+        GITHUB_TOKEN: ${{ secrets.Codeedit }} # Use the secret name as you have saved in GitHub
 
     - name: Commit and push if there are changes
       run: |
@@ -31,4 +31,4 @@ jobs:
         git commit -m "Automated update" -a || echo "No changes to commit"
         git push
       env:
-        GITHUB_TOKEN: ${{ Ask-the-code.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 }}
+        GITHUB_TOKEN: ${{ GITHUB_TOKEN: ${{ secrets.Codeedit }} }}
