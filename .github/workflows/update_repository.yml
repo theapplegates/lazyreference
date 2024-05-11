@@ -1,0 +1,34 @@
+name: Update Repository
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update_files:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js (if your script needs Node.js)
+      uses: actions/setup-node@v2
+      with:
+        node-version: '10.15.3'  # Specify the Node.js version you need
+
+    - name: Make changes to the repository
+      run: |
+        echo "Making changes to the file"
+        # Add your commands here to update files
+      env:
+        GITHUB_TOKEN: ${{ Ask-the-code.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 }}  # Use the secret name as you have saved in GitHub
+
+    - name: Commit and push if there are changes
+      run: |
+        git config --global user.email "paul@theapplegates.com"
+        git config --global user.name "Paul Applegate"
+        git add .
+        git commit -m "Automated update" -a || echo "No changes to commit"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ Ask-the-code.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 }}
